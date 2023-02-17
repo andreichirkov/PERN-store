@@ -1,5 +1,5 @@
 const sequelize = require('../db')
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 //allowNull = false -> поле обязательно должно иметь какое то значение
 
@@ -7,7 +7,7 @@ const User = sequelize.define('user', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   email: {type: DataTypes.STRING, unique: true},
   password: {type: DataTypes.STRING},
-  role: {type: DataTypes.STRING, defaultValue: "USER"} //cam be "ADMIN"
+  role: {type: DataTypes.STRING, defaultValue: "USER"} //maybe can be "ADMIN" in future
 })
 
 const Basket = sequelize.define('basket', {
