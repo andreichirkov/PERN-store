@@ -63,14 +63,10 @@ class UserController {
 
   //Функция проверки: авторизован пользователь или нет
   async check(req, res, next) {
-    //Можно получать параметры строки запроса
-    const { id } = req.query
+    //Тут Миддлвер уже отработал и у юзера точно есть токен
+    const token = generateJwt(req.user.id, req.user.email, req.user.role)
 
-    if (!id) {
-      return next(ApiError.badRequest('Не задан ID'))
-    }
-
-    res.json(id)
+    res.json({token})
   }
 }
 
