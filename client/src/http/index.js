@@ -12,9 +12,8 @@ const $authHost = axios.create({
 })
 
 const authInterception = config => {
-  return (config.headers.authorization = `Bearer ${localStorage.getItem(
-    "token"
-  )}`)
+  config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+  return config
 }
 
 //Этот интерцептор будет отрабатывать перед каждым запросом

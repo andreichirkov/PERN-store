@@ -1,4 +1,4 @@
-import {$host} from "./index";
+import {$authHost, $host} from "./index";
 import jwtDecode from "jwt-decode";
 
 export const registration = async (email, password) => {
@@ -20,7 +20,13 @@ export const login = async (email, password) => {
   return jwtDecode(data.token)
 }
 
+//Пользователь авторизовался и получил Токен, сохранился
+//Каждый раз при обновлении страницы будет вызываться эта функция
+//Если пользователь не валидный => будет разлогиниваться
+//... У $authHost уже есть в хедере токен, полученный из ЛокалСтораджа
+//Перезаписываем Токен
 export const check = async () => {
-  const response = await $host.post('api/auth/registration', )
-  return response
+  const { data } = await $authHost.get('api/user/auth')
+  localStorage.setItem('token', data.token)
+  return jwtDecode(data.token)
 }
