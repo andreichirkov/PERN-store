@@ -5,6 +5,7 @@ import { Pagination } from "react-bootstrap"
 
 const Pages = observer(() => {
   const { device } = useContext(Context)
+
   //Разделить общее кол-во товаров
   //На кол-во товаров на одной странице
   //Ceil округлит в большую сторону

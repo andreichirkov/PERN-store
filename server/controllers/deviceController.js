@@ -38,7 +38,7 @@ class DeviceController {
   //Тут если нет Квери-параметров, то возвращаем все девайсы
   //Если есть, то будет фильтрация по ним
   async getAll(req, res) {
-    let { brandId, typeId, limit, page } = req.query
+    let { brandId, typeId, page, limit } = req.query
     page = page || 1
     limit = limit || 9
 
