@@ -39,7 +39,6 @@ const CreateDevice = observer(({ show, onHide }) => {
   }
 
   const selectFile = e => {
-    console.log(e.target.files)
     setFile(e.target.files[0])
   }
 
